@@ -14,4 +14,4 @@ Note: These are not for the MVP, but more for future practices of making ERD and
 
 
 Below is the basic Entities Relational Diagram:
-![pg_schema](/docs/assets/images/ERD_basic.png)
+![Basic ERD](/docs/assets/images/ERD_basic.png)
