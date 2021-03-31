@@ -1,0 +1,45 @@
+{
+  "name": "todolist",
+  "version": "1.0.0",
+  "description": "todolist with venmo api",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server/server.js",
+    "build": "NODE_ENV=production webpack",
+    "dev": "NODE_ENV=development webpack-dev-server & npm start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dieunity/SoloProject.git"
+  },
+  "author": "Dieunity",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dieunity/SoloProject/issues"
+  },
+  "homepage": "https://github.com/dieunity/SoloProject#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "babel-loader": "^8.2.2",
+    "concurrently": "^4.1.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^5.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "nodemon": "^1.18.9",
+    "sass": "^1.32.8",
+    "sass-loader": "^10.1.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
