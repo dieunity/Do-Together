@@ -1,47 +1,47 @@
-CREATE TABLE "Users" (
-	"_ID" serial,
-	"userID" VARCHAR(255) NOT NULL UNIQUE,
-	"firstName" VARCHAR(255) DEFAULT 'User',
-	"lastName" VARCHAR(255) DEFAULT 'testLastName',
-	"ZipCode" integer DEFAULT '90024',
-	CONSTRAINT "Users_pk" PRIMARY KEY ("_ID")
+CREATE TABLE "users" (
+	"_id" serial,
+	"username" VARCHAR(255) NOT NULL UNIQUE,
+	"first_name" VARCHAR(255) DEFAULT 'User',
+	"last_name" VARCHAR(255) DEFAULT 'testLastName',
+	"zip_code" integer DEFAULT '90024',
+	CONSTRAINT "users_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "Todo List Collections" (
+CREATE TABLE "collections" (
 	"_id" serial NOT NULL,
-	"CollectionOwner" integer NOT NULL,
-	"CollectionName" VARCHAR(255),
-	"CollectionColor" VARCHAR(255) DEFAULT 'TrueBlue',
-	CONSTRAINT "Todo List Collections_pk" PRIMARY KEY ("_id")
+	"owner" integer NOT NULL,
+	"name" VARCHAR(255),
+	"color" VARCHAR(255) DEFAULT 'TrueBlue',
+	CONSTRAINT "collections_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "Tasks" (
+CREATE TABLE "tasks" (
 	"_id" integer NOT NULL,
-	"Task Collection" integer NOT NULL,
-	"AdultWalletID" integer NOT NULL,
-	"Task description" VARCHAR(200) NOT NULL,
-	"Reward Jar" integer NOT NULL DEFAULT '0',
-	"Completion Status" BOOLEAN,
-	CONSTRAINT "Tasks_pk" PRIMARY KEY ("_id")
+	"collection_id" integer NOT NULL,
+	"adult_wallet_id" integer NOT NULL,
+	"description" VARCHAR(200) NOT NULL,
+	"reward_jar" integer NOT NULL DEFAULT '0',
+	"complete_status" BOOLEAN,
+	CONSTRAINT "tasks_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
 
 
 
-CREATE TABLE "AdultWallet" (
-	"_WalletID" serial NOT NULL,
-	"AdultTokens" integer NOT NULL DEFAULT '50',
-	"WalletOwner" integer NOT NULL,
-	CONSTRAINT "AdultWallet_pk" PRIMARY KEY ("_WalletID")
+CREATE TABLE "adult_wallet" (
+	"_id" serial NOT NULL,
+	"adult_tokens" integer NOT NULL DEFAULT '50',
+	"owner" integer NOT NULL,
+	CONSTRAINT "adult_wallet_pk" PRIMARY KEY ("_id")
 ) WITH (
   OIDS=FALSE
 );
@@ -49,10 +49,9 @@ CREATE TABLE "AdultWallet" (
 
 
 
-ALTER TABLE "Todo List Collections" ADD CONSTRAINT "Todo List Collections_fk0" FOREIGN KEY ("CollectionOwner") REFERENCES "Users"("_ID");
+ALTER TABLE "collections" ADD CONSTRAINT "collections_fk0" FOREIGN KEY ("owner") REFERENCES "users"("_id");
 
-ALTER TABLE "Tasks" ADD CONSTRAINT "Tasks_fk0" FOREIGN KEY ("Task Collection") REFERENCES "Todo List Collections"("_id");
-ALTER TABLE "Tasks" ADD CONSTRAINT "Tasks_fk1" FOREIGN KEY ("AdultWalletID") REFERENCES "AdultWallet"("_WalletID");
+ALTER TABLE "tasks" ADD CONSTRAINT "tasks_fk0" FOREIGN KEY ("collection_id") REFERENCES "collections"("_id");
+ALTER TABLE "tasks" ADD CONSTRAINT "tasks_fk1" FOREIGN KEY ("adult_wallet_id") REFERENCES "adult_wallet"("_id");
 
-ALTER TABLE "AdultWallet" ADD CONSTRAINT "AdultWallet_fk0" FOREIGN KEY ("WalletOwner") REFERENCES "Users"("_ID");
-
+ALTER TABLE "adult_wallet" ADD CONSTRAINT "adult_wallet_fk0" FOREIGN KEY ("owner") REFERENCES "users"("_id");
