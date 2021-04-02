@@ -10,8 +10,11 @@ Note: These are not for the MVP, but more for future practices of making ERD and
 - Each user can change color code of their to-do tasks, to help them group
 - Each task will have a Tip Jar Button (when clicked, visiting user will send an AdultToken to user's AdultWallet)
 - Each task will also have a Reward Jar Button (when clicked, visiting user will send an AdultToken into that particular task's RewardJar)
-- When user checks off completion for the task, the corresponding RewardJar's balance will transfer to the user's AdultWallet. 
+- When user checks off completion for the task, the corresponding RewardJar's balance will transfer to the user's AdultWallet.
+- When user withdraw money, we take 5% fee (at least 100 tokens)
+- To get more AdultTokens, you can spend money to deposit
+- If user is inactive for a year, we start taking 25 tokens back
 
 
-Below is the basic Entities Relational Diagram:
+Below is the basic Entity Relationship Diagram:
 ![Basic ERD](/docs/assets/images/PayMeToAdult_basic.png)

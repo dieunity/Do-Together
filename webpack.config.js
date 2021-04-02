@@ -20,6 +20,15 @@ module.exports = {
         }
       },
       {
+        test: /\.ejs$/,
+        loader: 'ejs-loader',
+        options: {
+          variable: 'data',
+          interpolate : '\\{\\{(.+?)\\}\\}',
+          evaluate : '\\[\\[(.+?)\\]\\]'
+        }
+      },
+      {
         test: /\.s[ac]ss$/i,
         exclude: /(node_modules)/,
         use: [
